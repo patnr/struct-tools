@@ -1,14 +1,39 @@
 [tool.poetry]
 name = "struct-tools"
 version = "0.1.0"
-description = ""
+description = """Attribute-access and align-printed dicts.
+Transposing dict-of-dicts, list-of-lists, and mixed.
+Deep (nested) attribute access.
+Print functionality also provided as class to be subclassed.
+Dict intersection, complement.
+Cartesian product.
+"""
+license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
 
+readme = "README.md"
+
+#repository = "github..."
+#repository = "github..."
+keywords = ["dict", "list"]
+
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+#pytest-cov coverage pytest-sugar pytest-benchmark pytest-clarity pytest-xdist
+
+flake8 = "*"
+flakehell = "*"
+# flake8-docstrings, flake8-bugbear, flake8-comprehensions, flake8-isort
+
+line_profiler = "*"
+pre-commit = "*"
+ipython = "*"
+ipdb = "*"
+pdbpp = "*"
+pudb = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
