@@ -3,6 +3,13 @@
 Tools for working with data containers/structures,
 i.e. lists, dicts, classes.
 
+- Attribute-access and align-printed dicts.
+- Print functionality also provided as class to be subclassed.
+- Deep (nested) attribute access.
+- Transposing dict-of-dicts, list-of-lists, and mixed.
+- Dict intersection, complement.
+- Cartesian product.
+
 ### TODO
 See alternatives:
 - <https://github.com/srevenant/dictlib>
