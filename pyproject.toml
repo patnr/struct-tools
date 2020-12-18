@@ -1,13 +1,7 @@
 [tool.poetry]
 name = "struct-tools"
 version = "0.1.0"
-description = """Attribute-access and align-printed dicts.
-Transposing dict-of-dicts, list-of-lists, and mixed.
-Deep (nested) attribute access.
-Print functionality also provided as class to be subclassed.
-Dict intersection, complement.
-Cartesian product.
-"""
+description = "Tools for working with dicts (and lists)"
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
 
