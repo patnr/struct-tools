@@ -240,7 +240,7 @@ def _shorten_linewidth_by(n):
     # Avoid (overhead of) importing numpy if not required.
     # https://stackoverflow.com/a/30483269/38281
     if "numpy" in sys.modules:
-        def np_lw(lw): return np.set_printoptions(linewidth=lw)
+        def np_lw(lw): return sys.modules["numpy"].set_printoptions(linewidth=lw)
     else:  # Provide pass-through
         def np_lw(lw): return lw
 
