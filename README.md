@@ -17,6 +17,7 @@ See alternatives:
 - <https://pypi.org/project/dicty/>
 - <https://pypi.org/project/print-dict/>
 - <https://pypi.org/project/dictionaries/>
+- <https://github.com/wolever/pprintpp>
 
 Answer SO.com questions:
 <https://www.google.com/search?q=python+aligned+dict&oq=python+aligned+dict>
