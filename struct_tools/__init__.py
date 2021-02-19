@@ -354,6 +354,11 @@ class AlignedDict(dict):
     In particular, they need to implement behaviour for all types.
     """
 
+    def __init__(self, *args, **kwargs):
+        """Initialize like a normal dict."""
+        self.printopts = kwargs.pop("_printopts", {})
+        super().__init__(*args, **kwargs)
+
     @_init
     def __str__(self):
         return self._repr(False)
@@ -378,7 +383,7 @@ class AlignedDict(dict):
 
         # Apply print options
         dct = self
-        opt = getattr(self, "printopts", {})
+        opt = self.printopts
         dct = intersect(dct,  opt.get("included", dct))
         dct = complement(dct, opt.get("excluded", []))
         dct = {opt.get("aliases", {}).get(k, k): v for k, v in dct.items()}
