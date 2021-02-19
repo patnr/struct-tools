@@ -11,7 +11,12 @@ i.e. lists, dicts, classes.
 - Cartesian product.
 
 ### TODO
+
+- Put DotDict and AlignedDict each in their own module
+
 See alternatives:
+- <https://github.com/mewwts/addict>
+- <https://github.com/ducdetronquito/scalpl>
 - <https://github.com/srevenant/dictlib>
 - <https://pypi.org/project/dict/>
 - <https://pypi.org/project/dicty/>

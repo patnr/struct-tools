@@ -47,11 +47,11 @@ def flexcomp(x, *criteria):
 
 
 def _intersect(iterable, criteria, inv=False):
-    """Keep elements of ``iterable`` that match **any** criteria,
+    """Keep elements of `iterable` that match **any** criteria,
 
     as evaluated by flexcomp().
 
-    Returns dict/list if ``iterable`` is dict/iterable."""
+    Returns dict/list if `iterable` is dict/iterable."""
     def negate(x): return (not x) if inv else x
     keys = [k for k in iterable if negate(flexcomp(k, *criteria))]
     if isinstance(iterable, dict):  # Dict
@@ -128,6 +128,7 @@ def transps(thing2d, *args, **kwargs):
     elif     dict1 and not dict2: f = transpose_dict_of_lists   # noqa
     elif not dict1 and     dict2: f = transpose_list_of_dicts   # noqa
     elif not dict1 and not dict2: f = transpose_lists           # noqa
+    else: raise TypeError
 
     return f(thing2d, *args, **kwargs)
 
@@ -264,7 +265,7 @@ def _init(user_function):
 
     - Monitor recursion of self.
 
-      - This is done is just like in ``reprlib``
+      - This is done is just like in `reprlib`
         whence I learned how to make it thread-safe.
         One diff. is that here _repr_running is global,
         which works better for this convoluted example:
@@ -274,11 +275,11 @@ def _init(user_function):
 
       - Sibling repetition is not recursion.
 
-    - Initializes the linewidth with ``get_terminal_size()``,
-      unless the ``_linewidth`` variable has been set.
+    - Initializes the linewidth with `get_terminal_size()`,
+      unless the `_linewidth` variable has been set.
 
     Note: Both of these actions also require clean-up,
-    so there's a ``finally`` section as well.
+    so there's a `finally` section as well.
 
     Note: Cannot apply to core printing function (AlignedDict._repr),
     because each call to AlignedDict creates new (unregistered) id's."""
@@ -322,7 +323,7 @@ class AlignedDict(dict):
     """Dict whose items are printed aligned and line-wrapped.
 
     Initialized and used just like a regular dict, since only
-    difference to ``dict`` is __str__ and __repr__ (of which
+    difference to `dict` is __str__ and __repr__ (of which
     the other functions are auxiliaries and hidden).
 
     Also provides printopts. Example:
@@ -335,7 +336,7 @@ class AlignedDict(dict):
     >>> dct.printopts = dict(excluded=["z"], aliases={"A":"matrix"})
     >>> print(repr(dct))
 
-    Note on ``printopts["indent"]``:
+    Note on `printopts["indent"]`:
     - If not set,
       then the keys are right-aligned (so that the colons line up),
       and the values (including multi-line) are printed to their right,
@@ -355,16 +356,16 @@ class AlignedDict(dict):
 
     @_init
     def __str__(self):
-        return self._repr(is_repr=False)
+        return self._repr(False)
 
     @_init
     def __repr__(self):
-        return self._repr(is_repr=True)
+        return self._repr(True)
 
     def _repr(self, is_repr=False):
         """Both __str__ and __repr__ in one!
 
-        Note: if ``self`` is printed as part of a standard object,
+        Note: if `self` is printed as part of a standard object,
         __repr__ gets called, not __str__."""
 
         # Constants
@@ -503,8 +504,8 @@ class DotDict(AlignedDict):
 
     Benefit compared to a dict:
 
-     - Verbosity of ``d['a']`` vs. ``d.a``.
-     - Includes ``AlignedDict``.
+     - Verbosity of `d['a']` vs. `d.a`.
+     - Includes `AlignedDict`.
 
     DotDict is not terribly hackey, and is quite robust.
     Similar constructs are quite common, eg IPython/utils/ipstruct.py.

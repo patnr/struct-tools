@@ -8,7 +8,6 @@ authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
 readme = "README.md"
 
 #repository = "github..."
-#repository = "github..."
 keywords = ["dict", "list"]
 
 [tool.poetry.dependencies]
