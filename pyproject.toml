@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "struct-tools"
-version = "0.2.1"
+version = "0.2.3"
 description = "Tools for working with dicts (and lists)"
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]

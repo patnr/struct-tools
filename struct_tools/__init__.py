@@ -344,6 +344,8 @@ class AlignedDict(dict):
       This setting is pretty, unless the keys are really long.
     - If set (to an integer), then the values are printed on a new line,
       indented by that (unchanging) length (unless they're one-liners).
+    TODO: allow for a compromise between the using, using something like
+    a `max_indent` option? Ref https://github.com/nansencenter/DAPPER/issues/50
 
     A similar class is scipy.optimize.OptimizeResult
 
@@ -487,12 +489,22 @@ class NicePrint:
     printopts = dict(excluded=[_underscored, "printopts"])
 
     def _repr(self, is_repr=True):
-        cls_name = type(self).__name__ + "(" if is_repr else ""
         dct = AlignedDict(vars(self))
         dct.printopts = self.printopts
-        with _shorten_linewidth_by(len(cls_name)):
+
+        # cls_name
+        if is_repr:
+            cls_name = type(self).__name__ + "("
+            ind0 = self.printopts.get("indent", len(cls_name))
+        else:
+            cls_name = ""
+            ind0 = 0
+
+        # Indent repr(dct)
+        with _shorten_linewidth_by(ind0):
             txt = repr(dct) if is_repr else str(dct)
-            txt = ("\n" + " " * len(cls_name)).join(txt.splitlines())
+            txt = ("\n" + " "*ind0).join(txt.splitlines())
+
         return cls_name + txt + (")" if is_repr else "")
 
     @_init
