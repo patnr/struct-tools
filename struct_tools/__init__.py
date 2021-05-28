@@ -21,8 +21,7 @@ except:
 
 
 def get0(dct):
-    """Get first value."""
-    # Bad?: dct[list(dct.keys())[0]]
+    """The good -- the bad and the ugly being `dct[list(dct.keys())[0]]`."""
     return next(iter(dct.values()))
 
 
@@ -521,8 +520,8 @@ class DotDict(AlignedDict):
 
     Benefit compared to a dict:
 
-     - Verbosity of `d['a']` vs. `d.a`.
-     - Includes `AlignedDict`.
+    - Verbosity of `d['a']` vs. `d.a`.
+    - Includes `AlignedDict`.
 
     DotDict is not terribly hackey, and is quite robust.
     Similar constructs are quite common, eg IPython/utils/ipstruct.py.
