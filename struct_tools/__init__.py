@@ -1,5 +1,6 @@
 """Tools for dicts (and lists)."""
 
+from copy import deepcopy
 from importlib.metadata import version
 import itertools
 import shutil
@@ -535,6 +536,17 @@ class DotDict(AlignedDict):
         """Init like a normal dict."""
         super().__init__(*args, **kwargs)  # Make a (normal) dict
         self.__dict__ = self  # Assign it to self.__dict__
+
+    def __deepcopy__(self, memo):
+        """Fix deepcopy for `DotDict`.
+
+        Adapted from [here](https://stackoverflow.com/a/15774013).
+        """
+        self2 = self.__class__()
+        memo[id(self)] = self2
+        for k, v in self.items():
+            self2[k] = deepcopy(v, memo)
+        return self2
 
 
 # def print_nested(dct):
