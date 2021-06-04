@@ -1,7 +1,6 @@
 """Tools for dicts (and lists)."""
 
 from copy import deepcopy
-from importlib.metadata import version
 import itertools
 import shutil
 import sys
@@ -16,9 +15,12 @@ from contextlib import contextmanager
 
 
 try:
-    __version__ = version(__name__)
-except:
-    pass
+    import importlib.metadata as importlib_metadata
+except ModuleNotFoundError:
+    import importlib_metadata  # type: ignore
+
+# https://github.com/python-poetry/poetry/pull/2366#issuecomment-652418094
+__version__ = importlib_metadata.version(__name__)
 
 
 def get0(dct):

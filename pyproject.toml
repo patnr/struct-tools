@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "struct-tools"
-version = "0.2.4"
+version = "0.2.5"
 description = "Tools for working with dicts (and lists)"
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
@@ -12,6 +12,7 @@ keywords = ["dict", "list"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+importlib-metadata = {version = "^1.0", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
