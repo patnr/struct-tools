@@ -541,15 +541,16 @@ class DotDict(AlignedDict):
     def __init__(self, *args, **kwargs):
         """Init like a normal dict."""
         super().__init__(*args, **kwargs)  # Make a (normal) dict
-        self.__dict__ = self  # Assign it to self.__dict__
+        self.__dict__ = self               # Assign it to self.__dict__
 
     def __deepcopy__(self, memo):
         """Fix deepcopy for `DotDict`.
 
         Adapted from [here](https://stackoverflow.com/a/15774013).
         """
-        self2 = self.__class__()
-        memo[id(self)] = self2
+        self2 = self.__class__()  # init
+        memo[id(self)] = self2    # register
+        # Copy:
         for k, v in self.items():
             self2[k] = deepcopy(v, memo)
         return self2
