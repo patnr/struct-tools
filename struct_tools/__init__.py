@@ -389,7 +389,7 @@ class AlignedDict(dict):
         dct = self
         opt = self.printopts
         dct = intersect(dct,  opt.get("included", dct))
-        dct = complement(dct, opt.get("excluded", []))
+        dct = complement(dct, opt.get("excluded", set()))
         dct = {opt.get("aliases", {}).get(k, k): v for k, v in dct.items()}
 
         if "indent" in opt:
@@ -481,14 +481,14 @@ class NicePrint:
     Example usage:
     >>> class MyClass(NicePrint):
     >>>     printopts = NicePrint.printopts.copy()
-    >>>     printopts["excluded"] += ["my_hidden_var"]
-    >>>     printopts["aliases"] = {"asdf":"better_name"}
+    >>>     printopts["excluded"] |= {"my_hidden_var"}
+    >>>     printopts["aliases"] = {"cryptic": "clear"}
     >>>     ...
     """
 
     # _underscored = re.compile('^_')
     _underscored = lambda s: s.startswith("_") # noqa
-    printopts = dict(excluded=[_underscored, "printopts"])
+    printopts = dict(excluded={_underscored, "printopts"})
 
     def _repr(self, is_repr=True):
         dct = AlignedDict(vars(self))
