@@ -1,4 +1,4 @@
-# struc-tools
+# struct-tools
 
 Tools for working with data containers/structures,
 i.e. lists, dicts, classes.
