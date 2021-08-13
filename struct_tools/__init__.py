@@ -532,16 +532,16 @@ class DotDict(AlignedDict):
     Main inspiration: https://stackoverflow.com/a/14620633
     """
 
+    # Note: unlike AlignedDict, here the `printopts` cannot be instance
+    # attributes, coz then they will get output by `self.values()`, which can
+    # be very confusing. Of course, using class attrs will be limiting, since
+    # they affect *all* instances.
+    printopts = dict(excluded=set())
+
     def __init__(self, *args, **kwargs):
         """Init like a normal dict."""
         super().__init__(*args, **kwargs)  # Make a (normal) dict
-        tmp = self.printopts
         self.__dict__ = self  # Assign it to self.__dict__
-
-        # This removed all vars from self. => Restore printopts.
-        self.printopts = tmp
-        # Exclude printopts from printing
-        tmp.setdefault("excluded", set()).add("printopts")
 
     def __deepcopy__(self, memo):
         """Fix deepcopy for `DotDict`.
