@@ -22,7 +22,7 @@ flake8 = "*"
 flakehell = "*"
 # flake8-docstrings, flake8-bugbear, flake8-comprehensions, flake8-isort
 
-line_profiler = "*"
+# line_profiler = "*"
 pre-commit = "*"
 ipython = "*"
 ipdb = "*"
