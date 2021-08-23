@@ -10,11 +10,13 @@ i.e. lists, dicts, classes.
 - Dict intersection, complement.
 - Cartesian product.
 
-### TODO
+## TODO
 
+- Improve (at least the docs of) disparate management of printopts
 - Put DotDict and AlignedDict each in their own module
 
 See alternatives:
+
 - <https://github.com/mewwts/addict>
 - <https://github.com/ducdetronquito/scalpl>
 - <https://github.com/srevenant/dictlib>
