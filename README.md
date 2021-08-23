@@ -1,14 +1,15 @@
 # struct-tools
 
 Tools for working with data containers/structures,
-i.e. lists, dicts, classes.
+i.e. dicts, classes, lists.
 
-- Attribute-access and align-printed dicts.
-- Print functionality also provided as class to be subclassed.
+- AlignedDict: align-printed dicts
+- DotDict: attribute (dot) style access
+- NicePrint: provides `__repr__` (for subclassing) via AlignedDict 
 - Deep (nested) attribute access.
 - Transposing dict-of-dicts, list-of-lists, and mixed.
 - Dict intersection, complement.
-- Cartesian product.
+- Dict Cartesian product.
 
 ## TODO
 
