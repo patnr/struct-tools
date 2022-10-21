@@ -24,7 +24,7 @@ __version__ = importlib_metadata.version(__name__)
 
 
 def get0(dct):
-    """The good -- the bad and the ugly being `dct[list(dct.keys())[0]]`."""
+    """The good -- the bad and the ugly being `list(dct.values())[0]`."""
     return next(iter(dct.values()))
 
 
@@ -67,11 +67,9 @@ def intersect(iterable, wanteds):
     return _intersect(iterable, wanteds, inv=False)
 
 
+# Complement should be called "relative complement" (or set diff)
 def complement(iterable, unwanteds):
     return _intersect(iterable, unwanteds, inv=True)
-
-
-# Complement should be called "relative complement" (or set diff)
 
 
 def prodct(dct):
