@@ -54,7 +54,8 @@ def _intersect(iterable, criteria, inv=False):
     as evaluated by flexcomp().
 
     Returns dict/list if `iterable` is dict/iterable."""
-    def negate(x): return (not x) if inv else x
+    def negate(x):
+        return (not x) if inv else x
     keys = [k for k in iterable if negate(flexcomp(k, *criteria))]
     if isinstance(iterable, dict):  # Dict
         return {k: iterable[k] for k in keys}
@@ -128,7 +129,8 @@ def transps(thing2d, *args, **kwargs):
     elif     dict1 and not dict2: f = transpose_dict_of_lists   # noqa
     elif not dict1 and     dict2: f = transpose_list_of_dicts   # noqa
     elif not dict1 and not dict2: f = transpose_lists           # noqa
-    else: raise TypeError
+    else:
+        raise TypeError
 
     return f(thing2d, *args, **kwargs)
 
@@ -241,9 +243,11 @@ def _shorten_linewidth_by(n):
     # Avoid (overhead of) importing numpy if not required.
     # https://stackoverflow.com/a/30483269/38281
     if "numpy" in sys.modules:
-        def np_lw(lw): return sys.modules["numpy"].set_printoptions(linewidth=lw)
+        def np_lw(lw):
+            return sys.modules["numpy"].set_printoptions(linewidth=lw)
     else:  # Provide pass-through
-        def np_lw(lw): return lw
+        def np_lw(lw):
+            return lw
 
     # Structured (store, try, finally) just like np.printoptions().
     global _linewidth
@@ -386,7 +390,7 @@ class AlignedDict(dict):
         # Apply print options
         dct = self
         opt = self.printopts
-        dct = intersect(dct,  opt.get("included", dct))
+        dct = intersect(dct, opt.get("included", dct))
         dct = complement(dct, opt.get("excluded", set()))
         dct = {opt.get("aliases", {}).get(k, k): v for k, v in dct.items()}
 
@@ -503,7 +507,7 @@ class NicePrint:
         # Indent repr(dct)
         with _shorten_linewidth_by(ind0):
             txt = repr(dct) if is_repr else str(dct)
-            txt = ("\n" + " "*ind0).join(txt.splitlines())
+            txt = ("\n" + " " * ind0).join(txt.splitlines())
 
         return cls_name + txt + (")" if is_repr else "")
 
